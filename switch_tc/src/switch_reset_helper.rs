@@ -1,3 +1,5 @@
+//	File switch_reset_helper.rs automatically generated at 2024-12-31 14:10:12
+
 use std::sync::Arc;
 use crate::core::{QHsmHelper, ThreadedCodeExecutor};
 use std::any::Any;
