@@ -97,7 +97,7 @@ pub fn create_helper(helper: &Arc<QHsmHelper>) {
 
 To test the threaded code for hierarchical state machine, need to manually create two small modules that ensure the launch of the application:
 
->test.rc
+>test.rs
 >
 ```rust
 
@@ -136,4 +136,60 @@ fn main() {
 
 ## Description of the application
 
-The application is created as a __ubuntu console application__ and can be launched in terminal mode:
+The application is created as a __ubuntu console application__ and can be launched in terminal mode. There are two ways to launch the application:
+
+> In debug mode
+
+```
+
+micrcx@micrcx-desktop:~/rust/switch_tc$ cargo run
+warning: unused manifest key: core
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running `target/debug/switch_tc`
+OFF
+OFF: TURN
+ON
+@RESET
+OFF
+OFF: TURN
+ON
+ON:  TURN
+OFF
+@RESET
+OFF
+micrcx@micrcx-desktop:~/rust/switch_tc$
+
+```
+> In release mode
+
+```
+
+micrcx@micrcx-desktop:~/rust/switch_tc$
+
+micrcx@micrcx-desktop:~/rust/switch_tc$ cargo build --release
+warning: unused manifest key: core
+    Finished `release` profile [optimized] target(s) in 0.02s
+micrcx@micrcx-desktop:~/rust/switch_tc$
+
+micrcx@micrcx-desktop:~/rust/switch_tc$ cd target/release
+micrcx@micrcx-desktop:~/rust/switch_tc/target/release$ ./switch_tc
+OFF
+OFF: TURN
+ON
+@RESET
+OFF
+OFF: TURN
+ON
+ON:  TURN
+OFF
+@RESET
+OFF
+micrcx@micrcx-desktop:~/rust/switch_tc/target/release$
+
+```
+## Movie
+
+[rust.webm](https://github.com/user-attachments/assets/7b3b659e-487a-4e36-9ad9-b581873c595a)
+
+
+
