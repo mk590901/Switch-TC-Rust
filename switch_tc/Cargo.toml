@@ -1,0 +1,15 @@
+[package]
+name = "switch_tc"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[core]
+name = "switch_tc"
+path = "src/core.rs"
+
+[[bin]]
+name = "switch_tc"
+path = "src/main.rs"
+
