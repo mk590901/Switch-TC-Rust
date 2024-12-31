@@ -93,3 +93,47 @@ pub fn create_helper(helper: &Arc<QHsmHelper>) {
 
 ```
 
+## Additional modules
+
+To test the threaded code for hierarchical state machine, need to manually create two small modules that ensure the launch of the application:
+
+>test.rc
+>
+```rust
+
+use std::sync::Arc;
+use crate::core::{QHsmHelper, Runner, post};
+use crate::switch_reset_helper::create_helper;
+
+pub fn test_switch() {
+    let helper = Arc::new(QHsmHelper::new("switch".to_string()));
+    let runner = Runner::new(helper.clone());
+    create_helper(&helper);
+
+    post(&runner, "init".to_string(), None);
+    post(&runner, "TURN".to_string(), None);
+    post(&runner, "RESET".to_string(), None);
+    post(&runner, "TURN".to_string(), None);
+    post(&runner, "TURN".to_string(), None);
+    post(&runner, "RESET".to_string(), None);
+}
+```
+
+>main.rs
+>
+```rust
+
+mod core;
+mod test;
+mod switch_reset_helper;
+
+use test::test_switch;
+
+fn main() {
+    test_switch();
+}
+```
+
+## Description of the application
+
+The application is created as a __ubuntu console application__ and can be launched in terminal mode:
