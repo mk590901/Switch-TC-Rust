@@ -4,10 +4,10 @@ use std::sync::Arc;
 use crate::core::{QHsmHelper, ThreadedCodeExecutor};
 use std::any::Any;
 
-// pub fn switch_entry(void* data) {
+// pub fn switch_entry_data: Option<&Box<dyn Any>>) {
 // }
 
-// pub fn switch_init(void* data) {
+// pub fn switch_init(_data: Option<&Box<dyn Any>>) {
 // }
 
 pub fn off_entry(_data: Option<&Box<dyn Any>>) {
@@ -18,7 +18,7 @@ pub fn off_reset(_data: Option<&Box<dyn Any>>) {
     println!("@RESET");
 }
 
-// pub fn off_exit(void* data) {
+// pub fn off_exit(_data: Option<&Box<dyn Any>>) {
 // }
 
 pub fn off_turn(_data: Option<&Box<dyn Any>>) {
@@ -29,7 +29,7 @@ pub fn on_entry(_data: Option<&Box<dyn Any>>) {
     println!("ON");
 }
 
-// pub fn on_exit(void* data) {
+// pub fn on_exit(_data: Option<&Box<dyn Any>>) {
 // }
 
 pub fn on_turn(_data: Option<&Box<dyn Any>>) {
